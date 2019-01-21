@@ -48,14 +48,18 @@ public class NumbersActivity extends AppCompatActivity {
 
 
         /** Method A: Array Adapter + ListView
-         Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
-         adapter knows how to create layouts for each item in the list, using the
-         simple_list_item_1.xml layout resource defined in the Android framework.
-         This list item layout contains a single {@link TextView}, which the adapter will set to
-         display a single word.
+         * Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
+         * adapter knows how to create layouts for each item in the list, using the
+         * simple_list_item_1.xml layout resource defined in the Android framework.
+         * This list item layout contains a single {@link TextView}, which the adapter will set to
+         * display a single word.
          */
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+        // checkout R.layout templates
+//        ArrayAdapter<String> itemsAdapter =
+//                new ArrayAdapter<String>(this, R.layout.list_item, words);
+
 
         ListView listView = (ListView) findViewById(R.id.list);
 
