@@ -33,18 +33,20 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        //Create an arraylist of words
-        ArrayList<String> words = new ArrayList<String>();
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        //Create an arraylist of word object
+        ArrayList<Word> words = new ArrayList<Word>();
+
+        //words.add("one");
+        words.add(new Word("one","lutti"));
+        words.add(new Word("two","otiiko"));
+        words.add(new Word("three","tolookosu"));
+        words.add(new Word("four","oyyisa"));
+        words.add(new Word("five","massokka"));
+        words.add(new Word("six","temmokka"));
+        words.add(new Word("seven","kenekaku"));
+        words.add(new Word("eight","kawinta"));
+        words.add(new Word("nine","wo'e"));
+        words.add(new Word("ten","na'aacha"));
 
 
         /** Method A: Array Adapter + ListView
@@ -54,16 +56,15 @@ public class NumbersActivity extends AppCompatActivity {
          * This list item layout contains a single {@link TextView}, which the adapter will set to
          * display a single word.
          */
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
-        // checkout R.layout templates
 //        ArrayAdapter<String> itemsAdapter =
-//                new ArrayAdapter<String>(this, R.layout.list_item, words);
+//                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+        // checkout R.layout templates
+        WordAdapter adapter = new WordAdapter(this, R.layout.list_item, words);
 
 
         ListView listView = (ListView) findViewById(R.id.list);
 
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(adapter);
 
         // Method B: Child TextViews add to root view in loop
         // Find the root view so we can add child views
