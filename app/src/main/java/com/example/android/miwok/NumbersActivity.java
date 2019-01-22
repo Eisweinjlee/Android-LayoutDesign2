@@ -56,7 +56,7 @@ public class NumbersActivity extends AppCompatActivity {
 //        ArrayAdapter<String> itemsAdapter =
 //                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
         // checkout R.layout templates
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
 
         ListView listView = (ListView) findViewById(R.id.list);
 

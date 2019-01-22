@@ -1,6 +1,7 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    /** Resource for the background color */
+    public int mColorResourceId;
+
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
      * The context is used to inflate the layout file, and the list is the data we want
@@ -20,12 +24,13 @@ public class WordAdapter extends ArrayAdapter<Word> {
      * @param context       The current context. Used to inflate the layout file.
      * @param wordArrayList A List of AndroidFlavor objects to display in a list
      */
-    public WordAdapter(Activity context, ArrayList<Word> wordArrayList) {
+    public WordAdapter(Activity context, ArrayList<Word> wordArrayList, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, wordArrayList);
+        mColorResourceId = colorResourceId;
     }
 
 
@@ -73,6 +78,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
             // Otherwise hide the ImageView (set visibility to GONE)
             imageView.setVisibility(View.GONE);
         }
+
+        // Set the theme color for the list item
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        textContainer.setBackgroundColor(color);
 
 
         // Return the whole list item layout (containing 2 TextViews)
